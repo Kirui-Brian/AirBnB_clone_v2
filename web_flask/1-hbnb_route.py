@@ -1,12 +1,19 @@
 #!/usr/bin/python3
 """
-This module contains a Flask instance.
 
-The instance listens on 0.0.0.0, port 5000.
+Flask Web Application Module
+
+This module contains a Flask application instance that listens on all network interfaces at port 5000. It defines two routes:
+
+    1. '/' - returns "Hello HBNB!"
+    2. '/hbnb' - returns "HBNB"
 """
 
 from flask import Flask
-app = Flask(__Name__)
+
+# Initialize the Flask application
+app = Flask(__name__)
+
 
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
@@ -14,6 +21,7 @@ def hello_hbnb():
     This function returns the string "Hello HBNB!" when accessing the root '/'
     """
     return "Hello HBNB!"
+
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
