@@ -6,6 +6,7 @@ The instance listens on 0.0.0.0, port 5000.
 """
 
 from flask import Flask
+
 app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
@@ -26,21 +27,21 @@ def hbnb():
 def c_text(text):
     """
     This function returns the string "C " followed by the value of the text variable when accessing the '/c/<text>' path.
-    Underscore sysmbols in the text variable are replaced with a space.
+    Underscore symbols in the text variable are replaced with a space.
     """
     return "C " + text.replace("_", " ")
 
-@app.route('/pyhton/', defaults={'text': 'is cool'}, strict_slashes=False)
+@app.route('/python/', defaults={'text': 'is cool'}, strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def pyhton_text(text):
+def python_text(text):
     """
-    This function returns the string "Pyhton " followed byt the value of the text variable when accessing the '/python/<text>' path.
+    This function returns the string "Python " followed by the value of the text variable when accessing the '/python/<text>' path.
     Underscore symbols in the text variable are replaced with a space.
     The default value of the text is "is cool".
     """
     return "Python " + text.replace("_", " ")
 
-@app.route('/number/int:n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def number_n(n):
     """
     This function returns the string "n is a number" when accessing the '/number/<n>' path.
