@@ -1,35 +1,30 @@
 #!/usr/bin/python3
+"""script to start a flask app on localhost
 """
-This module contains a Flask instance.
-
-The instance listens on 0.0.0.0, port 5000.
-"""
-
-from flask import Flask, render_template
 from models import storage
-from models.state import State
-
+from flask import Flask
+from flask import render_template
 app = Flask(__name__)
 
 
-@app.route('/states_list', strict_slashes=False)
-def states_list():
-    """
-    This function returns an HTML page when accessing the '/states_list' path.
-    The page contains a list of all State objects present in DBStorage, sorted by name (A->Z).
-    """
-    states = storage.all(State)
-    sorted_states = sorted(states.values(), key=lambda state: state.name)
-    return render_template('7-states_list.html', states=sorted_states)
-
-
 @app.teardown_appcontext
-def close_session(exception):
-    """
-    This function removes the current SQLAlchemy Session after each request.
+def appcontext_teardown(exc=None):
+    """called on teardown of app contexts,
+        for more info on contexts visit
+        -> http://flask.pocoo.org/docs/1.0/appcontext/
+
+        Storage.close() closes the sql scoped session or reloads file
+            storage.
     """
     storage.close()
 
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+@app.route('/states_list', strict_slashes=False)
+def conditional_templating(n=None):
+    """checking input data using templating"""
+    return render_template('7-states_list.html',
+                           states=storage.all("State"))
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
