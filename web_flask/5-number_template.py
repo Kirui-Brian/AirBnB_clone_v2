@@ -29,7 +29,8 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
     """
-    Returns the string "C " followed by the value of the text variable when accessing the '/c/<text>' path.
+    Returns the string "C " followed by the value of the text
+    variable when accessing the '/c/<text>' path.
     Underscore symbols in the text variable are replaced with a space.
     """
     return "C " + text.replace("_", " ")
@@ -39,7 +40,8 @@ def c_text(text):
 @app.route('/python/<text>', strict_slashes=False)
 def python_text(text):
     """
-    Returns the string "Python " followed by the value of the text variable when accessing the '/python/<text>' path.
+    Returns the string "Python " followed by the value of the text
+    variable when accessing the '/python/<text>' path.
     Underscore symbols in the text variable are replaced with a space.
     The default value of text is "is cool".
     """
