@@ -9,12 +9,14 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
 def hello_hbnb():
     """
     This function returns the string "Hello HBNB!" when accessing the root '/'.
     """
     return "Hello HBNB!"
+
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
@@ -23,12 +25,13 @@ def hbnb():
     """
     return "HBNB"
 
+
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
     """
-    This function returns the string "C" followed by the value of the text variable
-    when accessing the '/c/<text>' path. Underscore symbols in the text variable
-    are replaced with a space.
+    This function returns the string "C" followed by the value of the
+    text variable when accessing the '/c/<text>' path.
+    Underscore symbols in the text variable are replaced with a space.
     """
     return "C " + text.replace("_", " ")
 
