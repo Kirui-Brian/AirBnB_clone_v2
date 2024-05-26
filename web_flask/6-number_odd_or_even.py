@@ -29,7 +29,8 @@ def hbnb():
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
     """
-    This function returns the string "C " followed by the value of the text variable when accessing the '/c/<text>' path.
+    This function returns the string "C " followed by the value of
+    the text variable when accessing the '/c/<text>' path.
     Underscore symbols in the text variable are replaced with a space.
     """
     return "C " + text.replace("_", " ")
@@ -39,7 +40,8 @@ def c_text(text):
 @app.route('/python/<text>', strict_slashes=False)
 def python_text(text):
     """
-    This function returns the string "Python " followed by the value of the text variable when accessing the '/python/<text>' path.
+    This function returns the string "Python " followed by the value of
+    the text variable when accessing the '/python/<text>' path.
     Underscore symbols in the text variable are replaced with a space.
     The default value of text is "is cool".
     """
@@ -49,7 +51,8 @@ def python_text(text):
 @app.route('/number/<int:n>', strict_slashes=False)
 def number_n(n):
     """
-    This function returns the string "n is a number" when accessing the '/number/<n>' path.
+    This function returns the string "n is a number"
+    when accessing the '/number/<n>' path.
     This route only works if n is an integer.
     """
     return "{} is a number".format(n)
@@ -58,7 +61,8 @@ def number_n(n):
 @app.route('/number_template/<int:n>', strict_slashes=False)
 def number_template(n):
     """
-    This function returns a HTML page when accessing the '/number_template/<n>' path.
+    This function returns a HTML page when accessing
+    the '/number_template/<n>' path.
     This route only works if n is an integer.
     """
     return render_template('5-number.html', n=n)
@@ -67,7 +71,8 @@ def number_template(n):
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def number_odd_or_even(n):
     """
-    This function returns a HTML page when accessing the '/number_odd_or_even/<n>' path.
+    This function returns a HTML page when accessing
+    the '/number_odd_or_even/<n>' path.
     This route only works if n is an integer.
     """
     return render_template('6-number_odd_or_even.html', n=n)
