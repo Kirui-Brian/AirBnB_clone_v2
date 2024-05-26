@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-from models import storage
 from models.city import City
 
 
@@ -11,6 +10,7 @@ class State(BaseModel, Base):
             Returns the list of City instances with state_id equals to
             the current State.id
             """
+            from models import storage
             all_cities = storage.all(City)
             state_cities = [
                     city for city in all_cities.values()
