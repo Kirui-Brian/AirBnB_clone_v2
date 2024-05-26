@@ -58,21 +58,25 @@ class DBStorage:
             print(E)
 
     def all(self, cls=None):
-        """returns a dictionary
-        Return:
-            returns a dictionary of objects stored in sqlalchemy
-        """
-        results = []
-        if cls is None:
-            for c in self.__classes:
-                for result in self.__session.query(c):
-                    results.append(result)
-        else:
-            result = self.__session.query(eval(cls))
-            results = result.all()
-        # return the results as a dictionary with class.id as key
-        return {"{}.{}".format(result.__class__.__name__, result.id): result
-                for result in results}
+    """returns a dictionary
+    Return:
+        returns a dictionary of objects stored in sqlalchemy
+    """
+    if self.__session is None:
+        print("Error: Session has been closed.")
+        return {}
+
+    results = []
+    if cls is None:
+        for c in self.__classes:
+            for result in self.__session.query(c):
+                results.append(result)
+    else:
+        result = self.__session.query(eval(cls))
+        results = result.all()
+    # return the results as a dictionary with class.id as key
+    return {"{}.{}".format(result.__class__.__name__, result.id): result
+            for result in results}
 
     def new(self, obj):
         """sets __object to given obj
