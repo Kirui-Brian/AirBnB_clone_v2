@@ -2,6 +2,7 @@
 from models import storage
 from models.city import City
 
+
 class State(BaseModel, Base):
     if models.storage_t != 'db':
         @property
@@ -11,5 +12,8 @@ class State(BaseModel, Base):
             the current State.id
             """
             all_cities = storage.all(City)
-            state_cities = [city for city in all_cities.values() if city.state_id == self.id]
+            state_cities = [
+                    city for city in all_cities.values()
+                    if city.state_id == self.id
+                    ]
             return state_cities
