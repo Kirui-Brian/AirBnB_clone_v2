@@ -58,10 +58,10 @@ class DBStorage:
             print(E)
 
     def all(self, cls=None):
-    """returns a dictionary
-    Return:
-        returns a dictionary of objects stored in sqlalchemy
-    """
+        """returns a dictionary
+        Return:
+            returns a dictionary of objects stored in sqlalchemy
+        """
     if self.__session is None:
         print("Error: Session has been closed.")
         return {}
